@@ -1,0 +1,102 @@
+@import "tailwindcss";
+
+@theme {
+  --color-paper: #f8f4ea;
+  --color-cream: #eee7d9;
+  --color-sage: #b7c3aa;
+  --color-sage-light: #dde3d3;
+  --color-moss: #55705a;
+  --color-forest: #1d3b2c;
+  --color-forest-deep: #0e241a;
+  --color-ink: #1c2a22;
+  --color-clay: #b08a63;
+
+  --font-display: "Palatino Linotype", "Book Antiqua", Palatino, "Iowan Old Style", Georgia, serif;
+  --font-body: "Avenir Next", "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+:root {
+  color-scheme: light;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 6.5rem;
+}
+
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  overflow-x: clip;
+}
+
+::selection {
+  background: var(--color-forest);
+  color: var(--color-paper);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-clay);
+  outline-offset: 3px;
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(1.5rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-rise {
+  animation: rise-in 0.95s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.animate-rise-delay-1 {
+  animation-delay: 0.12s;
+}
+
+.animate-rise-delay-2 {
+  animation-delay: 0.24s;
+}
+
+.animate-rise-delay-3 {
+  animation-delay: 0.36s;
+}
+
+.animate-fade {
+  animation: fade-in 1.2s ease both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .animate-rise,
+  .animate-fade {
+    animation: none;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
